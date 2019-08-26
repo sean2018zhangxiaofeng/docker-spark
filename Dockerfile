@@ -20,6 +20,9 @@ RUN chmod 700 /etc/bootstrap.sh
 
 #install R
 RUN rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+ADD epel.repo /etc/yum.repos.d
+RUN cd /etc/yum.repos.d && ls && cat epel.repo
 RUN yum -y install R
+
 
 ENTRYPOINT ["/etc/bootstrap.sh"]
